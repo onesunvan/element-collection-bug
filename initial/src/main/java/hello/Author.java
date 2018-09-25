@@ -3,6 +3,7 @@ package hello;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 public class Author {
@@ -26,6 +27,12 @@ public class Author {
         this.id = id;
         this.name = name;
         this.books = books;
+    }
+
+    public Author(Author author) {
+        this.id = author.id;
+        this.name = author.name;
+        this.books = author.books.stream().map(Book::new).collect(Collectors.toList());
     }
 
     public List<Book> getBooks() {

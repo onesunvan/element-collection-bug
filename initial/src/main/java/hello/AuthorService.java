@@ -28,7 +28,7 @@ public class AuthorService {
         LOG.info("findById - {}", author);
 
         phaser.arriveAndAwaitAdvance();
-        authorRepository.save(author);
+        authorRepository.save(new Author(author));
         LOG.info("saved author");
 
         phaser.arriveAndDeregister();

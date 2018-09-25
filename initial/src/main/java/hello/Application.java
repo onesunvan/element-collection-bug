@@ -28,7 +28,7 @@ public class Application {
         return (args) -> {
             init(authorRepository);
 
-            int threadNumber = 5;
+            int threadNumber = 2;
             authorService.register(threadNumber);
             CompletableFuture[] futures = IntStream.range(0, threadNumber).mapToObj(i -> {
                 return CompletableFuture.runAsync(authorService::foo);

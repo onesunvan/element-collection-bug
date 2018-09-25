@@ -10,6 +10,10 @@ public class Book {
     public Book() {
     }
 
+    public Book(Book book) {
+        this.name = book.name;
+    }
+
     public Book(String name) {
         this.name = name;
     }
