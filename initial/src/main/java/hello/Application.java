@@ -1,5 +1,9 @@
 package hello;
 
+import hello.fetchmodel.A;
+import hello.fetchmodel.ARepository;
+import hello.fetchmodel.B;
+import hello.fetchmodel.C;
 import hello.subentities.DRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,25 +27,22 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(DRepository dRepository) {
+    public CommandLineRunner demo(ARepository aRepository) {
         return (args) -> {
             LOG.info("=======================================================================");
-//            int bNumber = 5;
-//            int cNumber = 3;
-//            Set<B> bs = IntStream.range(0, bNumber).mapToObj(i -> new B(new Long(i),
-//                    Integer.toString(i) + "bla",
-//                    IntStream.range(0, cNumber)
-//                            .mapToObj(j -> new C(new Long(i * cNumber + j),
-//                                    Integer.toString(i * cNumber + j))).collect(Collectors.toList())
-//                    )).collect(Collectors.toSet());
-////            bRepository.saveAll(bs);
-//            LOG.info("=======================================================================");
-//            A a = new A(1L, bs , "1");
-////
-//            aRepository.save(a);
-////            aRepository.foo();
-//            A a1 = aRepository.findById(1L).get();
-//            LOG.info("ROFL {}", a1);
+            int bNumber = 5;
+            int cNumber = 3;
+            Set<B> bs = IntStream.range(0, bNumber).mapToObj(i -> new B(new Long(i),
+                    Integer.toString(i) + "bla",
+                    IntStream.range(0, cNumber)
+                            .mapToObj(j -> new C(new Long(i * cNumber + j),
+                                    Integer.toString(i * cNumber + j))).collect(Collectors.toList())
+                    )).collect(Collectors.toSet());
+            A a = new A(1L, bs , "1");
+            aRepository.save(a);
+            LOG.info("=======================================================================");
+            A a1 = aRepository.findById(1L).get();
+            LOG.info("ROFL {}", a1);
         };
     }
 
