@@ -14,7 +14,7 @@ public class A {
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "a_id")
-    @Fetch(FetchMode.JOIN)
+//    @Fetch(FetchMode.SUBSELECT)
     private Set<B> bs;
 
     private String name;

@@ -1,5 +1,6 @@
 package hello.fetchmodel;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -22,7 +23,8 @@ public class B {
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "b_id")
-    @Fetch(FetchMode.JOIN)
+//    @Fetch(FetchMode.SELECT)
+    @BatchSize(size = 2)
     private List<C> cs;
 
     public List<C> getCs() {

@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -41,8 +42,9 @@ public class Application {
             A a = new A(1L, bs , "1");
             aRepository.save(a);
             LOG.info("=======================================================================");
-            A a1 = aRepository.findById(1L).get();
-            LOG.info("ROFL {}", a1);
+//            A a1 = aRepository.findById(1L).get();
+//            LOG.info("ROFL {}", a1);
+            List<A> a1 = aRepository.customQuery();
         };
     }
 
