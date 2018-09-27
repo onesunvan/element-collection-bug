@@ -22,9 +22,9 @@ public class CustomARepositoryImpl implements CustomARepository {
     @Override
     @Transactional
     public void foo() {
-        LOG.info("HI IVAN");
-        List<B> bs = IntStream.range(0, 5).mapToObj(i -> new B(new Long(i), Integer.toString(i))).collect(Collectors.toList());
-        A a = new A(1L, bs , "1");
-        em.persist(a);
+//        LOG.info("HI IVAN");
+//        List<B> bs = IntStream.range(0, 5).mapToObj(i -> new B(new Long(i), Integer.toString(i))).collect(Collectors.toList());
+//        A a = new A(1L, bs , "1");
+//        em.merge(a);
     }
 }

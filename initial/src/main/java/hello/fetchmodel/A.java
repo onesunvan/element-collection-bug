@@ -4,18 +4,18 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class A {
     @Id
     private Long id;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "a_id")
     @Fetch(FetchMode.JOIN)
-    private List<B> bs;
+    private Set<B> bs;
 
     private String name;
 
@@ -51,11 +51,11 @@ public class A {
         this.id = id;
     }
 
-    public List<B> getBs() {
+    public Set<B> getBs() {
         return bs;
     }
 
-    public void setBs(List<B> bs) {
+    public void setBs(Set<B> bs) {
         this.bs = bs;
     }
 
@@ -70,7 +70,7 @@ public class A {
     public A() {
     }
 
-    public A(Long id, List<B> bs, String name) {
+    public A(Long id, Set<B> bs, String name) {
         this.id = id;
         this.bs = bs;
         this.name = name;
