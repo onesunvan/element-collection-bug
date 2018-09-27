@@ -1,28 +1,16 @@
 package hello;
 
-import hello.fetchmodel.A;
-import hello.fetchmodel.ARepository;
-import hello.fetchmodel.B;
-import hello.fetchmodel.BRepository;
-import hello.fetchmodel.C;
-import hello.fetchmodel.D;
-import hello.fetchmodel.DRepository;
-import hello.fetchmodel.E;
-import hello.fetchmodel.F;
+import hello.subentities.DRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 @SpringBootApplication
 public class Application {
@@ -53,17 +41,6 @@ public class Application {
 ////            aRepository.foo();
 //            A a1 = aRepository.findById(1L).get();
 //            LOG.info("ROFL {}", a1);
-            int eNumber = 4;
-            int fNumber = 5;
-            Set<E> es = LongStream.range(0, eNumber).mapToObj(i -> new E(i)).collect(Collectors.toSet());
-            Set<F> fs = LongStream.range(0, fNumber).mapToObj(i -> new F(i)).collect(Collectors.toSet());
-            D d = new D(1L, es, fs);
-            dRepository.save(d);
-
-            LOG.info("=======================================================================");
-
-            D d1 = dRepository.findById(1L).get();
-            LOG.info("ROFL {}", d1);
         };
     }
 

@@ -1,4 +1,4 @@
-package hello.fetchmodel;
+package hello.subentities;
 
 import org.springframework.data.repository.CrudRepository;
 

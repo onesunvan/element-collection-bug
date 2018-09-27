@@ -1,26 +1,23 @@
-package hello.fetchmodel;
+package hello.subentities;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Embeddable
-public class F {
+public class E {
     private Long id;
 
-    public Long getId() {
-        return id;
+    public E() {
     }
 
-    public void setId(Long id) {
+    public E(Long id) {
         this.id = id;
     }
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", F.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", E.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .toString();
     }
@@ -29,8 +26,8 @@ public class F {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        F f = (F) o;
-        return Objects.equals(id, f.id);
+        E e = (E) o;
+        return Objects.equals(id, e.id);
     }
 
     @Override
@@ -38,10 +35,11 @@ public class F {
         return Objects.hash(id);
     }
 
-    public F() {
+    public Long getId() {
+        return id;
     }
 
-    public F(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

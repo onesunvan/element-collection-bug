@@ -1,17 +1,11 @@
-package hello.fetchmodel;
+package hello.subentities;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.StringJoiner;
