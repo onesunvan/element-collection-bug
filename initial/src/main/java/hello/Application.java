@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.concurrent.CompletableFuture;
+
 @SpringBootApplication
 public class Application {
 
@@ -22,10 +24,14 @@ public class Application {
     public CommandLineRunner demo(ARepository aRepository) {
         return (args) -> {
             LOG.info("Starting sample app");
-            aRepository.save(new A("a1"));
-            aRepository.save(new A("a2"));
-            aRepository.save(new A("a3"));
-            aRepository.save(new A("a4"));
+//            aRepository.save(new A("a1"));
+//            aRepository.save(new A("a2"));
+//            aRepository.save(new A("a3"));
+//            aRepository.save(new A("a4"));
+
+            CompletableFuture<?> cF1 = CompletableFuture.runAsync(aRepository::foo);
+            CompletableFuture.runAsync(aRepository::bar).get();
+            cF1.get();
         };
     }
 }

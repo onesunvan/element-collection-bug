@@ -11,12 +11,20 @@ public class A {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "a_seq")
-    @SequenceGenerator(sequenceName = "a_seq", name = "a_seq")
+    @SequenceGenerator(sequenceName = "a_seq", name = "a_seq", allocationSize = 1)
     private Long id;
 
     private String name;
 
     public A() {
+    }
+
+    @Override
+    public String toString() {
+        return "A{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     public A(String name) {
